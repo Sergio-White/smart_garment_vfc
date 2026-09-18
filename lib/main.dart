@@ -10,19 +10,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Smart Garment VFC',
-      home: HomeScreen(),
-    );
+    return MaterialApp(home: HomeScreen());
   }
 }
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+
 class _HomeScreenState extends State<HomeScreen> {
   final DataSource fuente = SimulatedDataSource();
   double? meanHR;
