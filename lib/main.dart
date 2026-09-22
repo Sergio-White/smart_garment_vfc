@@ -1,5 +1,10 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'data/data_source.dart';
+import 'main_tab_screen.dart';
+import 'desviacion_autorreporte.dart';
+import 'detalle_de_un_dia.dart';
+import 'orientacion_perfil.dart';
+import 'reporte_mensual.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,8 +52,90 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(meanHR == null ? 'Esperando datos...' : '${meanHR!.toStringAsFixed(0)} BPM'),
+      body: SafeArea(
+        child: Column(
+          children: [
+            // --- Botones de navegación de prueba, arriba de la pantalla ---
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+              child: Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                alignment: WrapAlignment.center,
+                children: [
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.apps, size: 18),
+                    label: const Text('Ver App completa'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const MainTabScreen()),
+                      );
+                    },
+                  ),
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.report_gmailerrorred_outlined,
+                        size: 18),
+                    label: const Text('Ver Autorreporte'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const DesviacionAutorreporteScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.calendar_view_day_outlined,
+                        size: 18),
+                    label: const Text('Ver Detalle del día'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const DetalleDiaScreen()),
+                      );
+                    },
+                  ),
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.favorite_outline, size: 18),
+                    label: const Text('Ver Orientación'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const OrientacionPerfilScreen()),
+                      );
+                    },
+                  ),
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.description_outlined, size: 18),
+                    label: const Text('Ver Reporte mensual'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const ReporteMensualScreen()),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+
+            // --- Contenido original (BPM en tiempo real) ---
+            Expanded(
+              child: Center(
+                child: Text(
+                  meanHR == null
+                      ? 'Esperando datos...'
+                      : '${meanHR!.toStringAsFixed(0)} BPM',
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
