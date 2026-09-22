@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Contenido de la pestaña "Historial" ("6. Historia cardíaca").
-/// Muestra métricas resumen (FC reposo, RMSSD), un gráfico de barras de
-/// sesiones válidas por semana, un listado de sesiones recientes con su
-/// porcentaje de validez, y un botón para preparar el reporte mensual.
-///
-/// Nota: este widget ya NO incluye Scaffold, AppBar ni barra de
-/// navegación inferior propios — se muestra dentro de [MainTabScreen].
 class HistorialBaseScreen extends StatefulWidget {
   const HistorialBaseScreen({super.key});
 
@@ -15,11 +8,9 @@ class HistorialBaseScreen extends StatefulWidget {
 }
 
 class _HistorialBaseScreenState extends State<HistorialBaseScreen> {
-  // --- Datos de ejemplo ---
   final int _fcReposo = 74;
   final int _rmssd = 33;
 
-  // Alturas relativas (0.0 a 1.0) de las barras semanales, de izq. a der.
   final List<double> _sesionesPorSemana = const [0.45, 0.65, 0.55, 0.85];
 
   final List<Map<String, String>> _sesiones = const [
@@ -28,7 +19,6 @@ class _HistorialBaseScreenState extends State<HistorialBaseScreen> {
     {'fecha': '10 sep · 17 h 48 min', 'validez': '95% válida'},
   ];
 
-  // --- Colores del tema oscuro (según el mockup) ---
   static const Color _bgColor = Color(0xFF0B0F14);
   static const Color _cardColor = Color(0xFF141A22);
   static const Color _borderColor = Color(0xFF2A3340);
@@ -43,7 +33,7 @@ class _HistorialBaseScreenState extends State<HistorialBaseScreen> {
       appBar: AppBar(
         backgroundColor: _bgColor,
         elevation: 0,
-        automaticallyImplyLeading: false, // es una pestaña, no una sub-pantalla
+        automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           '6. Historia cardíaca',
@@ -61,7 +51,6 @@ class _HistorialBaseScreenState extends State<HistorialBaseScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- Etiqueta "Seguimiento" ---
               const Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -71,7 +60,6 @@ class _HistorialBaseScreenState extends State<HistorialBaseScreen> {
               ),
               const SizedBox(height: 8),
 
-              // --- Título "Mi historial" + ícono filtro ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -94,7 +82,6 @@ class _HistorialBaseScreenState extends State<HistorialBaseScreen> {
               ),
               const SizedBox(height: 12),
 
-              // --- FC reposo y RMSSD ---
               Row(
                 children: [
                   Expanded(
@@ -116,21 +103,17 @@ class _HistorialBaseScreenState extends State<HistorialBaseScreen> {
               ),
               const SizedBox(height: 16),
 
-              // --- Gráfico de barras: sesiones válidas por semana ---
               _buildBarrasCard(),
               const SizedBox(height: 16),
 
-              // --- Lista de sesiones recientes ---
               _buildListaSesiones(),
               const SizedBox(height: 20),
 
-              // --- Botón "Preparar reporte mensual" ---
               SizedBox(
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Lógica para preparar el reporte mensual
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: _accentColor,
@@ -154,10 +137,6 @@ class _HistorialBaseScreenState extends State<HistorialBaseScreen> {
       ),
     );
   }
-
-  // ---------------------------------------------------------------------
-  // WIDGETS AUXILIARES
-  // ---------------------------------------------------------------------
 
   Widget _buildMetricCard(String label, String valor, String nota) {
     return Container(

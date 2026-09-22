@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Pantalla "8. Reporte mensual para el médico"
-/// Vista previa del reporte PDF: resumen del periodo, selección de
-/// secciones a incluir, aviso de que es un prototipo, y acciones para
-/// descargar o compartir el archivo.
 class ReporteMensualScreen extends StatefulWidget {
   const ReporteMensualScreen({super.key});
 
@@ -12,10 +8,9 @@ class ReporteMensualScreen extends StatefulWidget {
 }
 
 class _ReporteMensualScreenState extends State<ReporteMensualScreen> {
-  // --- Rango de fechas mostrado (ejemplo) ---
+
   final String _rangoFechas = '1 ago – 31 ago';
 
-  // --- Resumen del periodo (ejemplo) ---
   final List<Map<String, String>> _resumen = const [
     {'label': 'Tiempo registrado', 'valor': '476 h'},
     {'label': 'Señal válida', 'valor': '91%'},
@@ -23,7 +18,6 @@ class _ReporteMensualScreenState extends State<ReporteMensualScreen> {
     {'label': 'Síntomas registrados', 'valor': '3'},
   ];
 
-  // --- Secciones a incluir en el PDF (todas activadas por defecto) ---
   final Map<String, bool> _seccionesPdf = {
     'Resumen y tendencias': true,
     'FC, RR, RMSSD y SDNN': true,
@@ -32,7 +26,6 @@ class _ReporteMensualScreenState extends State<ReporteMensualScreen> {
     'Calidad y datos excluidos': true,
   };
 
-  // --- Colores del tema oscuro (según el mockup) ---
   static const Color _bgColor = Color(0xFF0B0F14);
   static const Color _cardColor = Color(0xFF141A22);
   static const Color _borderColor = Color(0xFF2A3340);
@@ -45,7 +38,6 @@ class _ReporteMensualScreenState extends State<ReporteMensualScreen> {
     final secciones =
         _seccionesPdf.entries.where((e) => e.value).map((e) => e.key).toList();
 
-    // Aquí se conecta con la lógica real de generación del PDF
     debugPrint('Generando PDF con secciones: $secciones');
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -54,7 +46,7 @@ class _ReporteMensualScreenState extends State<ReporteMensualScreen> {
   }
 
   void _compartirArchivo() {
-    // Aquí se conecta con la lógica real de compartir (share_plus, etc.)
+
     debugPrint('Compartiendo archivo...');
   }
 
@@ -81,7 +73,7 @@ class _ReporteMensualScreenState extends State<ReporteMensualScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              // Abrir vista de documento completa
+
             },
             icon: const Icon(Icons.description_outlined, color: Colors.white70),
           ),
@@ -93,7 +85,6 @@ class _ReporteMensualScreenState extends State<ReporteMensualScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- Etiqueta de rango de fechas ---
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -103,19 +94,15 @@ class _ReporteMensualScreenState extends State<ReporteMensualScreen> {
               ),
               const SizedBox(height: 16),
 
-              // --- Tarjeta "Resumen del periodo" ---
               _buildResumenCard(),
               const SizedBox(height: 16),
 
-              // --- Tarjeta "Incluir en PDF" ---
               _buildIncluirPdfCard(),
               const SizedBox(height: 16),
 
-              // --- Aviso de prototipo ---
               _buildAvisoPrototipo(),
               const SizedBox(height: 16),
 
-              // --- Botón "Descargar PDF" ---
               SizedBox(
                 width: double.infinity,
                 height: 52,
@@ -141,7 +128,6 @@ class _ReporteMensualScreenState extends State<ReporteMensualScreen> {
               ),
               const SizedBox(height: 12),
 
-              // --- Botón "Compartir archivo" ---
               SizedBox(
                 width: double.infinity,
                 height: 52,
@@ -169,10 +155,6 @@ class _ReporteMensualScreenState extends State<ReporteMensualScreen> {
       ),
     );
   }
-
-  // ---------------------------------------------------------------------
-  // WIDGETS AUXILIARES
-  // ---------------------------------------------------------------------
 
   Widget _buildResumenCard() {
     return Container(

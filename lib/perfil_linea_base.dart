@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Pantalla "1. Perfil y línea base"
-/// Paso 2 de 3: Configurar perfil (Edad, Estatura, Peso, IMC, Factores)
 class PerfilLineaBaseScreen extends StatefulWidget {
   const PerfilLineaBaseScreen({super.key});
 
@@ -10,7 +8,7 @@ class PerfilLineaBaseScreen extends StatefulWidget {
 }
 
 class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
-  // --- Controladores de texto ---
+
   final TextEditingController _edadController =
       TextEditingController(text: '52');
   final TextEditingController _estaturaController =
@@ -18,11 +16,9 @@ class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
   final TextEditingController _pesoController =
       TextEditingController(text: '88');
 
-  // --- Progreso del wizard ---
   final int _pasoActual = 2;
   final int _pasoTotal = 3;
 
-  // --- Factores de riesgo (multi-selección) ---
   final Map<String, bool> _factores = {
     'Hipertensión': true,
     'Diabetes': false,
@@ -30,11 +26,10 @@ class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
     'Otro': false,
   };
 
-  // --- Colores del tema oscuro (según el mockup) ---
   static const Color _bgColor = Color(0xFF0B0F14);
   static const Color _cardColor = Color(0xFF141A22);
   static const Color _borderColor = Color(0xFF2A3340);
-  static const Color _accentColor = Color(0xFF7EC8E3); // celeste botón
+  static const Color _accentColor = Color(0xFF7EC8E3);
   static const Color _accentSelected = Color(0xFF9FD8EE);
   static const Color _mutedText = Color(0xFF8B96A5);
 
@@ -57,7 +52,6 @@ class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
         .map((e) => e.key)
         .toList();
 
-    // Aquí se conecta con la lógica real (API, base de datos, etc.)
     debugPrint('Edad: ${_edadController.text}');
     debugPrint('Estatura: ${_estaturaController.text} m');
     debugPrint('Peso: ${_pesoController.text} kg');
@@ -103,7 +97,7 @@ class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- Encabezado "Configurar perfil" ---
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
@@ -120,11 +114,9 @@ class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
               ),
               const SizedBox(height: 16),
 
-              // --- Barra de progreso ---
               _buildProgressCard(),
               const SizedBox(height: 20),
 
-              // --- Campo Edad ---
               _buildLabel('Edad'),
               _buildTextField(
                 controller: _edadController,
@@ -133,7 +125,6 @@ class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
               ),
               const SizedBox(height: 16),
 
-              // --- Campo Estatura ---
               _buildLabel('Estatura'),
               _buildTextField(
                 controller: _estaturaController,
@@ -142,7 +133,6 @@ class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
               ),
               const SizedBox(height: 16),
 
-              // --- Campo Peso ---
               _buildLabel('Peso'),
               _buildTextField(
                 controller: _pesoController,
@@ -151,11 +141,9 @@ class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
               ),
               const SizedBox(height: 16),
 
-              // --- Tarjeta IMC calculado ---
               _buildImcCard(),
               const SizedBox(height: 24),
 
-              // --- Factores registrados ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -169,7 +157,6 @@ class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
                   ),
                   OutlinedButton(
                     onPressed: () {
-                      // Lógica de edición de factores
                     },
                     style: OutlinedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -188,11 +175,9 @@ class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
               ),
               const SizedBox(height: 12),
 
-              // --- Grid de factores (2 columnas) ---
               _buildFactoresGrid(),
               const SizedBox(height: 24),
 
-              // --- Botón Crear línea base ---
               SizedBox(
                 width: double.infinity,
                 height: 52,
@@ -216,7 +201,6 @@ class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
               ),
               const SizedBox(height: 12),
 
-              // --- Nota inferior ---
               const Text(
                 'Requiere varias sesiones válidas en reposo. No es un diagnóstico.',
                 style: TextStyle(color: _mutedText, fontSize: 12),
@@ -227,10 +211,6 @@ class _PerfilLineaBaseScreenState extends State<PerfilLineaBaseScreen> {
       ),
     );
   }
-
-  // ---------------------------------------------------------------------
-  // WIDGETS AUXILIARES
-  // ---------------------------------------------------------------------
 
   Widget _buildLabel(String text) {
     return Padding(

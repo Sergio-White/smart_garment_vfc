@@ -4,19 +4,6 @@ import 'tendencias_base.dart';
 import 'historial_base.dart';
 import 'perfil_base.dart';
 
-/// Contenedor principal de las 4 pestañas de la app: Inicio, Tendencias,
-/// Historial y Perfil.
-///
-/// A diferencia de usar Navigator.push para cambiar de pestaña (lo que
-/// apilaba pantallas una encima de otra), aquí las 4 pantallas viven
-/// siempre montadas y solo se alterna cuál es visible mediante un
-/// crossfade suave. Esto logra que:
-///   - Cualquier botón de la barra inferior lleve DIRECTO a su pantalla,
-///     sin pasar "por encima" de otra.
-///   - El estado de cada pestaña (por ejemplo el rango 7/30 días en
-///     Tendencias) se conserve al cambiar de pestaña y volver.
-///   - El botón "atrás" del sistema ya no necesite lógica especial,
-///     porque no hay pantallas apiladas que deshacer.
 class MainTabScreen extends StatefulWidget {
   const MainTabScreen({super.key});
 
@@ -32,7 +19,6 @@ class _MainTabScreenState extends State<MainTabScreen> {
   static const Color _accentColor = Color(0xFF7EC8E3);
   static const Color _mutedText = Color(0xFF8B96A5);
 
-  // Las 4 pantallas se crean una sola vez y permanecen montadas.
   final List<Widget> _screens = const [
     MiCorazonScreen(),
     TendenciasBaseScreen(),
@@ -51,9 +37,7 @@ class _MainTabScreenState extends State<MainTabScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: _bgColor,
-      // Las 4 pantallas están siempre en el árbol; solo se cambia su
-      // opacidad para dar un efecto de fundido suave al cambiar de
-      // pestaña, sin perder el estado de cada una.
+
       body: Stack(
         children: List.generate(_screens.length, (index) {
           final bool seleccionada = index == _selectedIndex;

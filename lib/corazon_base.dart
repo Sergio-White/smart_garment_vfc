@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Contenido de la pestaña "Inicio" ("2. Inicio y monitoreo continuo").
-/// Muestra frecuencia cardíaca en vivo, RMSSD, movimiento,
-/// mensaje de estado y accesos para registrar cómo se siente
-/// el usuario o un síntoma/actividad.
-///
-/// Nota: este widget ya NO incluye Scaffold, AppBar ni barra de
-/// navegación inferior propios — se muestra dentro de [MainTabScreen],
-/// que es quien controla el cambio de pestañas.
 class MiCorazonScreen extends StatefulWidget {
   const MiCorazonScreen({super.key});
 
@@ -16,18 +8,16 @@ class MiCorazonScreen extends StatefulWidget {
 }
 
 class _MiCorazonScreenState extends State<MiCorazonScreen> {
-  // --- Datos simulados de ejemplo (reemplazar con datos reales) ---
   final int _frecuenciaCardiaca = 78;
   final String _calidadSenal = 'Señal buena';
   final int _rmssd = 34;
   final String _movimiento = 'Reposo';
   final bool _prendaConectada = true;
 
-  // --- Colores del tema oscuro (según el mockup) ---
   static const Color _bgColor = Color(0xFF0B0F14);
   static const Color _cardColor = Color(0xFF141A22);
   static const Color _borderColor = Color(0xFF2A3340);
-  static const Color _accentColor = Color(0xFF7EC8E3); // celeste ECG
+  static const Color _accentColor = Color(0xFF7EC8E3);
   static const Color _mutedText = Color(0xFF8B96A5);
   static const Color _infoBg = Color(0xFF1C2733);
   static const Color _infoBar = Color(0xFF5FA8D3);
@@ -39,13 +29,11 @@ class _MiCorazonScreenState extends State<MiCorazonScreen> {
       appBar: AppBar(
         backgroundColor: _bgColor,
         elevation: 0,
-        automaticallyImplyLeading: false, // controlamos el leading manualmente
+        automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(color: Colors.white),
         leading: IconButton(
           icon: const Icon(Icons.chevron_left, color: Colors.white, size: 28),
           onPressed: () {
-            // Cierra la pantalla completa de pestañas (MainTabScreen)
-            // y regresa a la pantalla anterior (por ejemplo, HomeScreen).
             Navigator.of(context).maybePop();
           },
         ),
@@ -65,7 +53,6 @@ class _MiCorazonScreenState extends State<MiCorazonScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- Estado de conexión ---
               Row(
                 children: [
                   Icon(
@@ -89,7 +76,6 @@ class _MiCorazonScreenState extends State<MiCorazonScreen> {
               ),
               const SizedBox(height: 16),
 
-              // --- Título "Mi corazón" ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -103,7 +89,6 @@ class _MiCorazonScreenState extends State<MiCorazonScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      // Navegar a ajustes
                     },
                     icon: const Icon(Icons.settings_outlined,
                         color: Colors.white70),
@@ -112,11 +97,9 @@ class _MiCorazonScreenState extends State<MiCorazonScreen> {
               ),
               const SizedBox(height: 12),
 
-              // --- Tarjeta de frecuencia cardíaca + ECG ---
               _buildFrecuenciaCard(),
               const SizedBox(height: 16),
 
-              // --- RMSSD y Movimiento ---
               Row(
                 children: [
                   Expanded(
@@ -130,18 +113,15 @@ class _MiCorazonScreenState extends State<MiCorazonScreen> {
               ),
               const SizedBox(height: 16),
 
-              // --- Mensaje informativo ---
               _buildInfoBanner(
                 'Registro continuo activo. La app conserva tendencias y descarta segmentos con mala calidad.',
               ),
               const SizedBox(height: 16),
 
-              // --- Botones de acción ---
               _buildActionButton(
                 icon: Icons.mood_outlined,
                 label: 'Registrar cómo me siento',
                 onTap: () {
-                  // Navegar a registro de estado de ánimo
                 },
               ),
               const SizedBox(height: 12),
@@ -149,7 +129,6 @@ class _MiCorazonScreenState extends State<MiCorazonScreen> {
                 icon: Icons.edit_note_outlined,
                 label: 'Registrar síntoma o actividad',
                 onTap: () {
-                  // Navegar a registro de síntoma/actividad
                 },
               ),
             ],
@@ -158,10 +137,6 @@ class _MiCorazonScreenState extends State<MiCorazonScreen> {
       ),
     );
   }
-
-  // ---------------------------------------------------------------------
-  // WIDGETS AUXILIARES
-  // ---------------------------------------------------------------------
 
   Widget _buildFrecuenciaCard() {
     return Container(
@@ -217,8 +192,7 @@ class _MiCorazonScreenState extends State<MiCorazonScreen> {
           ),
           const SizedBox(height: 12),
           ClipRRect(
-            // Evita que la onda se dibuje por fuera del contenedor,
-            // incluso si algún pico llegara a excederse.
+
             borderRadius: BorderRadius.circular(8),
             child: SizedBox(
               height: 110,
@@ -307,8 +281,6 @@ class _MiCorazonScreenState extends State<MiCorazonScreen> {
   }
 }
 
-/// Dibuja una línea tipo electrocardiograma (ECG) simplificada,
-/// repitiendo un patrón de latido a lo largo del ancho disponible.
 class _EcgPainter extends CustomPainter {
   final Color color;
 
@@ -316,8 +288,6 @@ class _EcgPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Margen interno de seguridad para que ningún pico toque el borde
-    // del contenedor (además del ClipRRect que ya recorta por fuera).
     const double verticalPadding = 6;
     final double drawableHeight = size.height - verticalPadding * 2;
 
@@ -325,7 +295,6 @@ class _EcgPainter extends CustomPainter {
       ..color = Colors.white24
       ..strokeWidth = 1;
 
-    // Líneas guía horizontales (arriba y abajo), como en el mockup
     canvas.drawLine(
       Offset(0, verticalPadding + drawableHeight * 0.15),
       Offset(size.width, verticalPadding + drawableHeight * 0.15),
@@ -347,7 +316,6 @@ class _EcgPainter extends CustomPainter {
     final Path path = Path();
     final double midY = verticalPadding + drawableHeight / 2;
 
-    // Patrón de un latido (unidades relativas de x e y)
     final List<Offset> patronLatido = [
       const Offset(0.0, 0.0),
       const Offset(0.12, 0.0),
@@ -365,9 +333,7 @@ class _EcgPainter extends CustomPainter {
       const Offset(1.0, 0.0),
     ];
 
-    const double anchoLatido = 140; // ancho en px de cada ciclo
-    // +2 repeticiones extra para asegurar que el trazo cubra todo el ancho
-    // disponible sin cortarse abruptamente en el borde derecho.
+    const double anchoLatido = 140;
     final int repeticiones = (size.width / anchoLatido).ceil() + 2;
 
     bool first = true;
@@ -375,8 +341,6 @@ class _EcgPainter extends CustomPainter {
       final double offsetX = rep * anchoLatido;
       for (final punto in patronLatido) {
         final double x = offsetX + punto.dx * anchoLatido;
-        // dy se limita a un rango seguro dentro de drawableHeight para
-        // que ningún pico (R o S) sobrepase el contenedor.
         final double y = midY + punto.dy * (drawableHeight * 0.45);
         if (first) {
           path.moveTo(x, y);
@@ -387,7 +351,6 @@ class _EcgPainter extends CustomPainter {
       }
     }
 
-    // Recorta cualquier segmento que exceda el ancho real del widget.
     canvas.save();
     canvas.clipRect(Rect.fromLTWH(0, 0, size.width, size.height));
     canvas.drawPath(path, linePaint);

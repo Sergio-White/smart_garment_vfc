@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
-/// Contenido de la pestaña "Tendencias" ("4. Tendencias cruzadas").
-/// Muestra la evolución de FC/VFC vs. estado anímico en el tiempo,
-/// junto con coincidencias observadas entre eventos y mediciones.
-///
-/// Nota: este widget ya NO incluye Scaffold, AppBar ni barra de
-/// navegación inferior propios — se muestra dentro de [MainTabScreen].
 class TendenciasBaseScreen extends StatefulWidget {
   const TendenciasBaseScreen({super.key});
 
@@ -15,10 +9,8 @@ class TendenciasBaseScreen extends StatefulWidget {
 }
 
 class _TendenciasBaseScreenState extends State<TendenciasBaseScreen> {
-  // --- Rango seleccionado: true = 30 días, false = 7 días ---
   bool _rango30Dias = true;
 
-  // --- Coincidencias observadas (ejemplo) ---
   final List<Map<String, String>> _coincidencias = const [
     {'label': 'Estrés', 'valor': '6 eventos'},
     {'label': 'Enojo', 'valor': '3 eventos'},
@@ -28,8 +20,8 @@ class _TendenciasBaseScreenState extends State<TendenciasBaseScreen> {
   static const Color _bgColor = Color(0xFF0B0F14);
   static const Color _cardColor = Color(0xFF141A22);
   static const Color _borderColor = Color(0xFF2A3340);
-  static const Color _accentColor = Color(0xFF7EC8E3); // celeste FC/VFC
-  static const Color _altColor = Color(0xFFE79E8B); // rosa Estado alterado
+  static const Color _accentColor = Color(0xFF7EC8E3);
+  static const Color _altColor = Color(0xFFE79E8B); 
   static const Color _mutedText = Color(0xFF8B96A5);
   static const Color _selectedBorder = Color(0xFF9FD8EE);
 
@@ -40,7 +32,7 @@ class _TendenciasBaseScreenState extends State<TendenciasBaseScreen> {
       appBar: AppBar(
         backgroundColor: _bgColor,
         elevation: 0,
-        automaticallyImplyLeading: false, // es una pestaña, no una sub-pantalla
+        automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           '4. Tendencias cruzadas',
@@ -58,7 +50,6 @@ class _TendenciasBaseScreenState extends State<TendenciasBaseScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- Etiqueta "Últimos 30 días" ---
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -71,7 +62,6 @@ class _TendenciasBaseScreenState extends State<TendenciasBaseScreen> {
               ),
               const SizedBox(height: 8),
 
-              // --- Título "Tendencias" + ícono calendario ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -85,7 +75,7 @@ class _TendenciasBaseScreenState extends State<TendenciasBaseScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      // Abrir selector de fechas
+
                     },
                     icon: const Icon(Icons.calendar_today_outlined,
                         color: Colors.white70, size: 20),
@@ -94,15 +84,12 @@ class _TendenciasBaseScreenState extends State<TendenciasBaseScreen> {
               ),
               const SizedBox(height: 12),
 
-              // --- Selector de rango 7 días / 30 días ---
               _buildRangoSelector(),
               const SizedBox(height: 16),
 
-              // --- Tarjeta de gráfico ---
               _buildGraficoCard(),
               const SizedBox(height: 16),
 
-              // --- Tarjeta de coincidencias observadas ---
               _buildCoincidenciasCard(),
             ],
           ),
@@ -110,10 +97,6 @@ class _TendenciasBaseScreenState extends State<TendenciasBaseScreen> {
       ),
     );
   }
-
-  // ---------------------------------------------------------------------
-  // WIDGETS AUXILIARES
-  // ---------------------------------------------------------------------
 
   Widget _buildRangoSelector() {
     return Row(
@@ -208,7 +191,6 @@ class _TendenciasBaseScreenState extends State<TendenciasBaseScreen> {
           ),
           const SizedBox(height: 16),
 
-          // --- Gráfico de líneas (recortado para no salir del borde) ---
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: SizedBox(
@@ -224,7 +206,6 @@ class _TendenciasBaseScreenState extends State<TendenciasBaseScreen> {
           ),
           const SizedBox(height: 12),
 
-          // --- Leyenda ---
           Row(
             children: [
               _buildLeyendaItem('FC/VFC', _accentColor),
@@ -306,9 +287,6 @@ class _TendenciasBaseScreenState extends State<TendenciasBaseScreen> {
   }
 }
 
-/// Dibuja las dos curvas de tendencia (FC/VFC sólida y Estado alterado
-/// punteada) junto con puntos marcadores sobre la línea punteada,
-/// tal como en el mockup.
 class _TendenciasChartPainter extends CustomPainter {
   final Color colorPrincipal;
   final Color colorAlterado;
@@ -324,7 +302,6 @@ class _TendenciasChartPainter extends CustomPainter {
     final double h = size.height - verticalPadding * 2;
     final double w = size.width;
 
-    // --- Líneas guía horizontales ---
     final Paint gridPaint = Paint()
       ..color = Colors.white24
       ..strokeWidth = 1;
@@ -343,7 +320,6 @@ class _TendenciasChartPainter extends CustomPainter {
       return Offset(xRel * w, verticalPadding + yRel * h);
     }
 
-    // --- Curva principal (FC/VFC) sólida, con dos "jorobas" ---
     final List<Offset> puntosPrincipal = [
       puntoRelativo(0.00, 0.55),
       puntoRelativo(0.15, 0.30),
@@ -363,7 +339,6 @@ class _TendenciasChartPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
     canvas.drawPath(pathPrincipal, paintPrincipal);
 
-    // --- Curva de estado alterado (punteada), más plana ---
     final List<Offset> puntosAlterado = [
       puntoRelativo(0.00, 0.65),
       puntoRelativo(0.20, 0.72),
@@ -380,7 +355,6 @@ class _TendenciasChartPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
     _dibujarLineaPunteada(canvas, pathAlterado, paintAlterado);
 
-    // --- Puntos marcadores sobre la línea de estado alterado ---
     final Paint dotPaint = Paint()..color = colorAlterado;
     for (final xRel in [0.20, 0.38, 0.55]) {
       final metric = pathAlterado.computeMetrics().first;
@@ -391,12 +365,9 @@ class _TendenciasChartPainter extends CustomPainter {
       }
     }
 
-    // Recorta cualquier exceso por fuera del área disponible.
     canvas.clipRect(Rect.fromLTWH(0, 0, size.width, size.height));
   }
 
-  /// Construye una curva suave (spline simple con curvas cuadráticas)
-  /// que pasa por los puntos dados.
   Path _construirCurvaSuave(List<Offset> puntos) {
     final Path path = Path();
     if (puntos.isEmpty) return path;
@@ -414,8 +385,6 @@ class _TendenciasChartPainter extends CustomPainter {
     return path;
   }
 
-  /// Dibuja un [path] como línea punteada, extrayendo segmentos cortos
-  /// a lo largo de su longitud total.
   void _dibujarLineaPunteada(Canvas canvas, Path path, Paint paint) {
     const double dashWidth = 5;
     const double dashSpace = 4;

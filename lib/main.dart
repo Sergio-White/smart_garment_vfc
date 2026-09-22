@@ -55,7 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // --- Botones de navegación de prueba, arriba de la pantalla ---
             Padding(
               padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
               child: Wrap(
@@ -124,7 +123,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            // --- Contenido original (BPM en tiempo real) ---
             Expanded(
               child: Center(
                 child: Text(

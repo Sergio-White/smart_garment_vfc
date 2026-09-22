@@ -8,11 +8,9 @@ class PerfilBaseScreen extends StatefulWidget {
 }
 
 class _PerfilBaseScreenState extends State<PerfilBaseScreen> {
-  // --- Estado del dispositivo (ejemplo) ---
   bool _dispositivoConectado = true;
   final int _bateria = 84;
 
-  // --- Opciones de configuración con navegación por chevron ---
   final List<String> _opciones = const [
     'Mi perfil e IMC',
     'Plan médico y síntomas de alarma',
@@ -22,7 +20,6 @@ class _PerfilBaseScreenState extends State<PerfilBaseScreen> {
     'Eliminar mis datos',
   ];
 
-  // --- Colores del tema oscuro (según el mockup) ---
   static const Color _bgColor = Color(0xFF0B0F14);
   static const Color _cardColor = Color(0xFF141A22);
   static const Color _borderColor = Color(0xFF2A3340);
@@ -41,7 +38,7 @@ class _PerfilBaseScreenState extends State<PerfilBaseScreen> {
       appBar: AppBar(
         backgroundColor: _bgColor,
         elevation: 0,
-        automaticallyImplyLeading: false, // es una pestaña, no una sub-pantalla
+        automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           '9. Dispositivo, privacidad y ayuda',
@@ -59,7 +56,6 @@ class _PerfilBaseScreenState extends State<PerfilBaseScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- Etiqueta "Perfil" ---
               const Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -69,7 +65,6 @@ class _PerfilBaseScreenState extends State<PerfilBaseScreen> {
               ),
               const SizedBox(height: 8),
 
-              // --- Título "Configuración" + ícono de persona ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
@@ -86,25 +81,20 @@ class _PerfilBaseScreenState extends State<PerfilBaseScreen> {
               ),
               const SizedBox(height: 16),
 
-              // --- Tarjeta del dispositivo conectado ---
               _buildDispositivoCard(),
               const SizedBox(height: 16),
 
-              // --- Lista de opciones de configuración ---
               _buildListaOpciones(),
               const SizedBox(height: 16),
 
-              // --- Aviso de emergencia ---
               _buildAvisoEmergencia(),
               const SizedBox(height: 16),
 
-              // --- Botón "Ayuda y alcance del prototipo" ---
               SizedBox(
                 width: double.infinity,
                 height: 52,
                 child: OutlinedButton(
                   onPressed: () {
-                    // Abrir ayuda / alcance del prototipo
                   },
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: _borderColor),
@@ -128,10 +118,6 @@ class _PerfilBaseScreenState extends State<PerfilBaseScreen> {
       ),
     );
   }
-
-  // ---------------------------------------------------------------------
-  // WIDGETS AUXILIARES
-  // ---------------------------------------------------------------------
 
   Widget _buildDispositivoCard() {
     return Container(
@@ -204,7 +190,6 @@ class _PerfilBaseScreenState extends State<PerfilBaseScreen> {
                           bottom: Radius.circular(14))
                       : BorderRadius.zero,
               onTap: () {
-                // Navegar a la sub-pantalla correspondiente
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(

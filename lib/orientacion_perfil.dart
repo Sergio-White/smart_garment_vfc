@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
 
-/// Pantalla "7. Orientación breve según perfil"
-/// Muestra una recomendación educativa breve con base en el IMC
-/// registrado del usuario, sugerencias de qué podría registrar hoy,
-/// y un acceso para actualizar peso y estatura.
 class OrientacionPerfilScreen extends StatelessWidget {
   const OrientacionPerfilScreen({super.key});
 
-  // --- Datos de ejemplo ---
   final double _imc = 31.9;
 
-  // --- Sugerencias del día, con su ícono ---
   static const List<(String, IconData)> _sugerencias = [
     ('Registrar alimentos y horarios', Icons.restaurant_outlined),
     ('Realizar la actividad autorizada', Icons.directions_run_outlined),
     ('Registrar cómo te sentiste', Icons.edit_note_outlined),
   ];
 
-  // --- Colores del tema oscuro (según el mockup) ---
   static const Color _bgColor = Color(0xFF0B0F14);
   static const Color _cardColor = Color(0xFF141A22);
   static const Color _borderColor = Color(0xFF2A3340);
@@ -53,7 +46,6 @@ class OrientacionPerfilScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- Etiqueta "Bienestar" ---
               const Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -63,7 +55,6 @@ class OrientacionPerfilScreen extends StatelessWidget {
               ),
               const SizedBox(height: 8),
 
-              // --- Título "Información para ti" + ícono info ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -77,7 +68,6 @@ class OrientacionPerfilScreen extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      // Mostrar más información
                     },
                     icon: const Icon(Icons.info_outline, color: Colors.white70),
                   ),
@@ -85,32 +75,26 @@ class OrientacionPerfilScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
 
-              // --- Tarjeta de IMC ---
               _buildImcCard(),
               const SizedBox(height: 16),
 
-              // --- Recomendación educativa ---
               _buildRecomendacionBanner(),
               const SizedBox(height: 16),
 
-              // --- Tarjeta "Hoy podría ser útil" ---
               _buildSugerenciasCard(),
               const SizedBox(height: 16),
 
-              // --- Nota legal ---
               const Text(
                 'La aplicación no prescribe dietas, ejercicio ni cambios de tratamiento. El IMC es solo un dato de contexto.',
                 style: TextStyle(color: _mutedText, fontSize: 12, height: 1.4),
               ),
               const SizedBox(height: 16),
 
-              // --- Botón "Actualizar peso y estatura" ---
               SizedBox(
                 width: double.infinity,
                 height: 52,
                 child: OutlinedButton(
                   onPressed: () {
-                    // Navegar a actualizar peso y estatura
                   },
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: _borderColor),
@@ -134,10 +118,6 @@ class OrientacionPerfilScreen extends StatelessWidget {
       ),
     );
   }
-
-  // ---------------------------------------------------------------------
-  // WIDGETS AUXILIARES
-  // ---------------------------------------------------------------------
 
   Widget _buildImcCard() {
     return Container(

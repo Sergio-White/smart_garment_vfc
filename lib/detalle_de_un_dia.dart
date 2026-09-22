@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Pantalla "5. Detalle de un día"
-/// Muestra la actividad de un día específico: gráfico de frecuencia
-/// cardíaca vs. movimiento, eventos registrados en ese día, un mensaje
-/// destacando una elevación relevante, y acceso a la señal y calidad.
 class DetalleDiaScreen extends StatefulWidget {
   const DetalleDiaScreen({super.key});
 
@@ -12,22 +8,19 @@ class DetalleDiaScreen extends StatefulWidget {
 }
 
 class _DetalleDiaScreenState extends State<DetalleDiaScreen> {
-  // --- Fecha mostrada (ejemplo) ---
   final String _fecha = '12 de septiembre';
 
-  // --- Eventos registrados en el día (ejemplo) ---
   final List<Map<String, String>> _eventos = const [
     {'hora': '08:10', 'label': 'Sueño insuficiente', 'valor': '6/10'},
     {'hora': '13:42', 'label': 'Caminata', 'valor': '20 min'},
     {'hora': '17:18', 'label': 'Estrés', 'valor': '7/10'},
   ];
 
-  // --- Colores del tema oscuro (según el mockup) ---
   static const Color _bgColor = Color(0xFF0B0F14);
   static const Color _cardColor = Color(0xFF141A22);
   static const Color _borderColor = Color(0xFF2A3340);
-  static const Color _accentColor = Color(0xFF7EC8E3); // celeste FC
-  static const Color _altColor = Color(0xFFE79E8B); // rosa Movimiento
+  static const Color _accentColor = Color(0xFF7EC8E3);
+  static const Color _altColor = Color(0xFFE79E8B);
   static const Color _mutedText = Color(0xFF8B96A5);
   static const Color _infoBg = Color(0xFF1C2733);
   static const Color _infoBar = Color(0xFF5FA8D3);
@@ -55,7 +48,6 @@ class _DetalleDiaScreenState extends State<DetalleDiaScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              // Abrir menú de opciones adicionales
             },
             icon: const Icon(Icons.more_horiz, color: Colors.white70),
           ),
@@ -67,7 +59,6 @@ class _DetalleDiaScreenState extends State<DetalleDiaScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- Etiqueta de fecha ---
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -77,27 +68,22 @@ class _DetalleDiaScreenState extends State<DetalleDiaScreen> {
               ),
               const SizedBox(height: 16),
 
-              // --- Tarjeta de gráfico ---
               _buildGraficoCard(),
               const SizedBox(height: 16),
 
-              // --- Tarjeta de eventos registrados ---
               _buildEventosCard(),
               const SizedBox(height: 16),
 
-              // --- Mensaje destacado ---
               _buildInfoBanner(
                 'A las 17:18 hubo una elevación respecto a tu línea base mientras el movimiento era bajo.',
               ),
               const SizedBox(height: 16),
 
-              // --- Botón "Ver señal y calidad" ---
               SizedBox(
                 width: double.infinity,
                 height: 52,
                 child: OutlinedButton(
                   onPressed: () {
-                    // Navegar al detalle de señal y calidad
                   },
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: _borderColor),
@@ -122,10 +108,6 @@ class _DetalleDiaScreenState extends State<DetalleDiaScreen> {
     );
   }
 
-  // ---------------------------------------------------------------------
-  // WIDGETS AUXILIARES
-  // ---------------------------------------------------------------------
-
   Widget _buildGraficoCard() {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -143,7 +125,6 @@ class _DetalleDiaScreenState extends State<DetalleDiaScreen> {
           ),
           const SizedBox(height: 16),
 
-          // --- Gráfico de líneas (recortado para no salir del borde) ---
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: SizedBox(
@@ -159,7 +140,6 @@ class _DetalleDiaScreenState extends State<DetalleDiaScreen> {
           ),
           const SizedBox(height: 12),
 
-          // --- Leyenda ---
           Row(
             children: [
               _buildLeyendaItem('FC', _accentColor),
@@ -248,8 +228,6 @@ class _DetalleDiaScreenState extends State<DetalleDiaScreen> {
   }
 }
 
-/// Dibuja las dos curvas del día (FC sólida y Movimiento punteada),
-/// tal como en el mockup.
 class _DetalleDiaChartPainter extends CustomPainter {
   final Color colorFc;
   final Color colorMovimiento;
@@ -265,7 +243,6 @@ class _DetalleDiaChartPainter extends CustomPainter {
     final double h = size.height - verticalPadding * 2;
     final double w = size.width;
 
-    // --- Líneas guía horizontales ---
     final Paint gridPaint = Paint()
       ..color = Colors.white24
       ..strokeWidth = 1;
@@ -284,7 +261,6 @@ class _DetalleDiaChartPainter extends CustomPainter {
       return Offset(xRel * w, verticalPadding + yRel * h);
     }
 
-    // --- Curva de FC (sólida), con dos picos ---
     final List<Offset> puntosFc = [
       puntoRelativo(0.00, 0.65),
       puntoRelativo(0.15, 0.55),
@@ -304,7 +280,6 @@ class _DetalleDiaChartPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
     canvas.drawPath(pathFc, paintFc);
 
-    // --- Curva de Movimiento (punteada), más plana y desfasada ---
     final List<Offset> puntosMovimiento = [
       puntoRelativo(0.00, 0.75),
       puntoRelativo(0.18, 0.78),
@@ -323,12 +298,9 @@ class _DetalleDiaChartPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
     _dibujarLineaPunteada(canvas, pathMovimiento, paintMovimiento);
 
-    // Recorta cualquier exceso por fuera del área disponible.
     canvas.clipRect(Rect.fromLTWH(0, 0, size.width, size.height));
   }
 
-  /// Construye una curva suave (spline simple con curvas cuadráticas)
-  /// que pasa por los puntos dados.
   Path _construirCurvaSuave(List<Offset> puntos) {
     final Path path = Path();
     if (puntos.isEmpty) return path;
@@ -346,8 +318,6 @@ class _DetalleDiaChartPainter extends CustomPainter {
     return path;
   }
 
-  /// Dibuja un [path] como línea punteada, extrayendo segmentos cortos
-  /// a lo largo de su longitud total.
   void _dibujarLineaPunteada(Canvas canvas, Path path, Paint paint) {
     const double dashWidth = 5;
     const double dashSpace = 4;

@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Pantalla "3. Desviación y autorreporte"
-/// Se muestra cuando se detecta un cambio respecto al patrón habitual
-/// de frecuencia cardíaca, y permite al usuario dar contexto: si su
-/// estado anímico se alteró, qué sintió, la intensidad percibida,
-/// qué estaba haciendo, y una nota opcional.
 class DesviacionAutorreporteScreen extends StatefulWidget {
   const DesviacionAutorreporteScreen({super.key});
 
@@ -15,8 +10,8 @@ class DesviacionAutorreporteScreen extends StatefulWidget {
 
 class _DesviacionAutorreporteScreenState
     extends State<DesviacionAutorreporteScreen> {
-  // --- Estado del formulario ---
-  bool? _estadoAlterado = true; // null = sin responder, true = Sí, false = No
+
+  bool? _estadoAlterado = true;
 
   final Map<String, bool> _sentimientos = {
     'Estrés': true,
@@ -42,7 +37,6 @@ class _DesviacionAutorreporteScreenState
   final TextEditingController _notaController =
       TextEditingController(text: 'Tuve una discusión.');
 
-  // --- Colores del tema oscuro (según el mockup) ---
   static const Color _bgColor = Color(0xFF0B0F14);
   static const Color _cardColor = Color(0xFF141A22);
   static const Color _borderColor = Color(0xFF2A3340);
@@ -62,7 +56,6 @@ class _DesviacionAutorreporteScreenState
     final sentidos =
         _sentimientos.entries.where((e) => e.value).map((e) => e.key).toList();
 
-    // Aquí se conecta con la lógica real (API, base de datos, etc.)
     debugPrint('Estado anímico alterado: $_estadoAlterado');
     debugPrint('Sentimientos: $sentidos');
     debugPrint('Intensidad: ${_intensidad.round()}/10');
@@ -99,7 +92,7 @@ class _DesviacionAutorreporteScreenState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- Estado de señal ---
+
               Align(
                 alignment: Alignment.centerRight,
                 child: Row(
@@ -116,7 +109,6 @@ class _DesviacionAutorreporteScreenState
               ),
               const SizedBox(height: 8),
 
-              // --- Título + botón cerrar ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -136,11 +128,9 @@ class _DesviacionAutorreporteScreenState
               ),
               const SizedBox(height: 12),
 
-              // --- Aviso de cambio respecto al patrón ---
               _buildAvisoPatron(),
               const SizedBox(height: 20),
 
-              // --- ¿Tu estado anímico se alteró? ---
               const Text(
                 '¿Tu estado anímico se alteró?',
                 style: TextStyle(color: Colors.white, fontSize: 14),
@@ -167,7 +157,6 @@ class _DesviacionAutorreporteScreenState
               ),
               const SizedBox(height: 20),
 
-              // --- Selecciona lo que sentiste ---
               const Text(
                 'Selecciona lo que sentiste',
                 style: TextStyle(color: Colors.white, fontSize: 14),
@@ -176,7 +165,6 @@ class _DesviacionAutorreporteScreenState
               _buildSentimientosGrid(),
               const SizedBox(height: 20),
 
-              // --- Intensidad percibida ---
               Text(
                 'Intensidad percibida: ${_intensidad.round()}/10',
                 style: const TextStyle(color: Colors.white, fontSize: 14),
@@ -199,7 +187,6 @@ class _DesviacionAutorreporteScreenState
               ),
               const SizedBox(height: 12),
 
-              // --- ¿Qué estabas haciendo? ---
               const Text(
                 '¿Qué estabas haciendo?',
                 style: TextStyle(color: Colors.white, fontSize: 14),
@@ -208,7 +195,6 @@ class _DesviacionAutorreporteScreenState
               _buildActividadDropdown(),
               const SizedBox(height: 20),
 
-              // --- Nota opcional ---
               const Text(
                 'Nota opcional',
                 style: TextStyle(color: Colors.white, fontSize: 14),
@@ -217,7 +203,6 @@ class _DesviacionAutorreporteScreenState
               _buildNotaField(),
               const SizedBox(height: 24),
 
-              // --- Botón Guardar evento ---
               SizedBox(
                 width: double.infinity,
                 height: 52,
@@ -241,7 +226,6 @@ class _DesviacionAutorreporteScreenState
               ),
               const SizedBox(height: 12),
 
-              // --- Botón Omitir por ahora ---
               SizedBox(
                 width: double.infinity,
                 height: 52,
@@ -269,10 +253,6 @@ class _DesviacionAutorreporteScreenState
       ),
     );
   }
-
-  // ---------------------------------------------------------------------
-  // WIDGETS AUXILIARES
-  // ---------------------------------------------------------------------
 
   Widget _buildAvisoPatron() {
     return Container(
