@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'chatbot_bitacora.dart';
 
 class MiCorazonScreen extends StatefulWidget {
   const MiCorazonScreen({super.key});
@@ -122,6 +123,11 @@ class _MiCorazonScreenState extends State<MiCorazonScreen> {
                 icon: Icons.mood_outlined,
                 label: 'Registrar cómo me siento',
                 onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const ChatbotBitacoraScreen(),
+                    ),
+                  );
                 },
               ),
               const SizedBox(height: 12),

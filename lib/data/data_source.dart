@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:math';
-// ============================================================
+// 
 // MODELOS DE DATOS — mismo formato que los paquetes BLE definidos
-// ============================================================
+// 
 
 /// Representa un latido individual recibido (real o simulado).
 class RRPacket {
@@ -55,9 +55,9 @@ class DeviceStatus {
   });
 }
 
-// ============================================================
+// 
 // INTERFAZ ABSTRACTA — el contrato que ambas fuentes deben cumplir
-// ============================================================
+// 
 
 /// Contrato común para cualquier fuente de datos fisiológicos,
 /// sea el simulador o el dispositivo BLE real.
@@ -83,9 +83,9 @@ abstract class DataSource {
   Future<void> stop();
 }
 
-// ============================================================
-// IMPLEMENTACIÓN 1 — Simulador (úsala mientras no hay hardware)
-// ============================================================
+// 
+// Simulador (úsala mientras no hay hardware)
+// 
 
 class SimulatedDataSource implements DataSource {
   final _rrController = StreamController<RRPacket>.broadcast();
@@ -95,6 +95,7 @@ class SimulatedDataSource implements DataSource {
   Timer? _rrTimer;
   Timer? _motionTimer;
   Timer? _statusTimer;
+  Timer? _modeTimer;
 
   int _seqRR = 0;
   int _seqMotion = 0;
@@ -117,7 +118,7 @@ class SimulatedDataSource implements DataSource {
   @override
   Future<void> start() async {
     // Cambia el RR base cada ~20s para simular reposo/actividad
-    Timer.periodic(const Duration(seconds: 20), (_) {
+    _modeTimer = Timer.periodic(const Duration(seconds: 20), (_) {
       _currentBaseRR = _rand.nextBool() ? 850 : 500;
     });
 
@@ -170,12 +171,13 @@ class SimulatedDataSource implements DataSource {
     _rrTimer?.cancel();
     _motionTimer?.cancel();
     _statusTimer?.cancel();
+    _modeTimer?.cancel();
   }
 }
 
-// ============================================================
-// IMPLEMENTACIÓN 2 — BLE real (esqueleto, se completa con el hardware)
-// ============================================================
+// 
+// BLE real (esqueleto, se completa con el hardware)
+// 
 
 class BleDataSource implements DataSource {
   final _rrController = StreamController<RRPacket>.broadcast();
@@ -199,9 +201,9 @@ class BleDataSource implements DataSource {
   @override
   Future<void> start() async {
     // TODO cuando el hardware esté listo:
-    // 1. Escanear y conectar con flutter_blue_plus
-    // 2. Suscribirse a las 3 características (RR_STREAM, MOTION_STREAM, DEVICE_STATUS)
-    // 3. Parsear cada paquete de bytes (little-endian) al modelo correspondiente
+    // Escanear y conectar con flutter
+    // Suscribirse a las 3 características (RR_STREAM, MOTION_STREAM, DEVICE_STATUS)
+    // Parsear cada paquete de bytes (little-endian) al modelo correspondiente
     //    y emitirlo por el controller respectivo.
     // El resto de la app NO CAMBIA — sigue consumiendo rrStream/motionStream/statusStream.
     throw UnimplementedError('Pendiente de integración con hardware real');

@@ -1,0 +1,281 @@
+text,label
+me duele el pecho,dolor_pecho
+siento una presión en el pecho,dolor_pecho
+tengo una punzada en el pecho,dolor_pecho
+me arde el pecho,dolor_pecho
+siento como si me apretaran el pecho,dolor_pecho
+tengo un dolor fuerte aquí en el pecho,dolor_pecho
+me duele el lado izquierdo del pecho,dolor_pecho
+siento pesadez en el pecho,dolor_pecho
+me punza el pecho cada rato,dolor_pecho
+tengo molestia en el pecho,dolor_pecho
+siento el pecho tenso,dolor_pecho
+me duele al respirar aquí en el pecho,dolor_pecho
+tengo como una opresión en el pecho,dolor_pecho
+me duele el corazón bueno el pecho,dolor_pecho
+siento un dolor punzante del lado del corazón,dolor_pecho
+me duele fuerte del lado del corazón,dolor_pecho
+siento un ardor en el pecho,dolor_pecho
+tengo dolor en el pecho al moverme,dolor_pecho
+siento como agujas en el pecho,dolor_pecho
+me duele el pecho cuando respiro hondo,dolor_pecho
+siento un pinchazo agudo en el pecho,dolor_pecho
+tengo dolor en el esternón,dolor_pecho
+siento el pecho oprimido al toser,dolor_pecho
+me duele el costado izquierdo cerca del corazón,dolor_pecho
+siento un dolor sordo en el pecho,dolor_pecho
+tengo molestia torácica,dolor_pecho
+siento como si trajera algo atorado en el pecho,dolor_pecho
+me duele el pecho al estirarme,dolor_pecho
+siento una molestia constante en el tórax,dolor_pecho
+tengo el pecho sensible al tacto,dolor_pecho
+siento dolor en el pecho que se irradia al brazo,dolor_pecho
+me duele el pecho al toser fuerte,dolor_pecho
+siento una sensación de quemazón torácica,dolor_pecho
+tengo el pecho adolorido desde anoche,dolor_pecho
+siento que el dolor de pecho aumenta al inhalar,dolor_pecho
+me duele justo en medio del pecho,dolor_pecho
+siento un dolor intermitente en el tórax,dolor_pecho
+tengo el pecho resentido desde el ejercicio,dolor_pecho
+siento dolor en el pecho al agacharme,dolor_pecho
+me duele el pecho de forma punzante y repentina,dolor_pecho
+siento que el corazón me late muy rápido,palpitaciones
+tengo palpitaciones,palpitaciones
+el corazón se me acelera de repente,palpitaciones
+siento como si el corazón se me fuera a salir,palpitaciones
+noto que mi corazón late irregular,palpitaciones
+tengo taquicardia,palpitaciones
+siento el corazón brincando,palpitaciones
+me late muy fuerte el corazón sin razón,palpitaciones
+siento un aleteo en el pecho como si el corazón fallara,palpitaciones
+el corazón me late rapidísimo cuando me paro,palpitaciones
+siento las pulsaciones muy aceleradas,palpitaciones
+tengo el pulso disparado,palpitaciones
+me late el corazón como si hubiera corrido,palpitaciones
+siento que el corazón se me sale del pecho,palpitaciones
+siento palpitaciones muy seguido,palpitaciones
+siento que el corazón se me desboca,palpitaciones
+tengo el corazón acelerado sin hacer esfuerzo,palpitaciones
+noto que me late doble el corazón,palpitaciones
+siento un vuelco en el pecho,palpitaciones
+el corazón me da tumbos,palpitaciones
+siento que el corazón me da un vuelco de repente,palpitaciones
+noto arritmia en mi pulso,palpitaciones
+siento el corazón galopando sin razón,palpitaciones
+tengo la sensación de que el corazón se salta un latido,palpitaciones
+siento el pulso irregular en la muñeca,palpitaciones
+mi corazón late fuera de ritmo,palpitaciones
+siento que el corazón se acelera sin hacer nada,palpitaciones
+tengo sensación de latidos fuertes en el cuello,palpitaciones
+siento que el corazón me retumba en el pecho,palpitaciones
+noto que mi ritmo cardíaco se dispara de la nada,palpitaciones
+siento el corazón agitado en reposo,palpitaciones
+tengo taquicardia sin haber hecho esfuerzo físico,palpitaciones
+siento que el corazón me palpita en los oídos,palpitaciones
+mi corazón late de forma errática hoy,palpitaciones
+siento sacudidas en el pecho por los latidos,palpitaciones
+noto que el corazón se me dispara al levantarme,palpitaciones
+siento que mi pulso se acelera sin motivo,palpitaciones
+tengo la impresión de que el corazón se me para y arranca,palpitaciones
+siento el corazón latiendo con fuerza inusual,palpitaciones
+noto palpitaciones que aparecen y desaparecen,palpitaciones
+me cuesta respirar,falta_aire
+siento que me falta el aire,falta_aire
+no puedo respirar bien,falta_aire
+me ahogo un poco al subir escaleras,falta_aire
+siento que no me llega el aire completo,falta_aire
+respiro con dificultad,falta_aire
+me falta el aliento,falta_aire
+siento opresión al respirar,falta_aire
+no logro tomar aire profundo,falta_aire
+me quedo sin aire con cualquier esfuerzo,falta_aire
+siento que respiro corto,falta_aire
+me cuesta llenar los pulmones,falta_aire
+siento ahogo al hablar mucho,falta_aire
+me falta el aire aunque esté sentado,falta_aire
+siento que me falta oxígeno,falta_aire
+siento que respiro con esfuerzo,falta_aire
+me falta el aire al hablar seguido,falta_aire
+siento que no me entra suficiente aire,falta_aire
+respiro agitado sin haber hecho nada,falta_aire
+me cuesta tomar una bocanada de aire,falta_aire
+siento que el aire no me llena los pulmones,falta_aire
+me cuesta inhalar profundamente,falta_aire
+siento que respiro de forma superficial,falta_aire
+tengo la sensación de ahogo al caminar rápido,falta_aire
+siento que el pecho se me cierra al respirar,falta_aire
+me falta el aire incluso descansando,falta_aire
+siento que jadeo sin haber hecho esfuerzo,falta_aire
+tengo dificultad para tomar aire suficiente,falta_aire
+siento que respiro entrecortado,falta_aire
+me cuesta respirar hondo sin toser,falta_aire
+siento opresión torácica al inhalar,falta_aire
+tengo la sensación de asfixia leve,falta_aire
+siento que el aire se me acaba rápido al hablar,falta_aire
+me cuesta respirar al subir una pendiente,falta_aire
+siento que respiro con silbido,falta_aire
+tengo sensación de ahogo al acostarme,falta_aire
+siento que el aire no fluye bien al respirar,falta_aire
+me falta el aliento con actividades simples,falta_aire
+siento fatiga respiratoria constante,falta_aire
+tengo la sensación de que me falta aire de forma repentina,falta_aire
+me siento mareado,mareo
+siento que todo me da vueltas,mareo
+tengo vértigo,mareo
+me mareo al levantarme,mareo
+siento que voy a perder el equilibrio,mareo
+ando medio mareado,mareo
+siento la cabeza ligera y mareo,mareo
+se me nubla la vista y siento mareo,mareo
+siento que me voy a caer de mareo,mareo
+tengo un mareo constante,mareo
+me da vueltas la cabeza,mareo
+siento inestabilidad al caminar,mareo
+me siento aturdido y mareado,mareo
+siento mareo cuando me agacho,mareo
+ando con mareo desde que desperté,mareo
+siento que pierdo el balance,mareo
+me da vueltas todo cuando me paro rápido,mareo
+siento la cabeza girando,mareo
+ando con vértigo intermitente,mareo
+siento que floto un poco de mareo,mareo
+siento que la habitación gira a mi alrededor,mareo
+se me va la fuerza de las piernas por el mareo,mareo
+siento que camino como borracho de tan mareado,mareo
+todo se me pone borroso y siento que giro,mareo
+siento que pierdo el piso de tan mareado,mareo
+me cuesta enfocar la vista ando mareado,mareo
+siento que me tambaleo al caminar,mareo
+tengo la sensación de estar en un barco todo se mueve,mareo
+siento que en cualquier momento me desplomo de mareo,mareo
+se me doblan las piernas del mareo,mareo
+siento que el cuarto no deja de moverse,mareo
+ando desorientado y con mareo,mareo
+siento vértigo al subir escaleras,mareo
+me tengo que sostener de algo porque siento que me caigo,mareo
+siento que la cabeza me da vueltas al girar el cuello,mareo
+veo puntos y siento mareo,mareo
+siento que pierdo el sentido del equilibrio al levantarme rápido,mareo
+ando con la sensación de que todo se ladea,mareo
+siento un mareo que va y viene todo el día,mareo
+me cuesta mantenerme de pie del mareo,mareo
+me siento muy cansado,cansancio
+no tengo energía para nada,cansancio
+estoy agotado,cansancio
+siento fatiga constante,cansancio
+me cuesta hasta levantarme de cansancio,cansancio
+ando sin fuerzas,cansancio
+siento el cuerpo pesado de cansancio,cansancio
+estoy exhausto aunque no hice mucho,cansancio
+me siento débil y sin ánimo físico,cansancio
+no puedo con el cansancio,cansancio
+siento que me falta energía,cansancio
+ando agotado sin motivo aparente,cansancio
+me siento sin fuerzas para caminar,cansancio
+estoy cansadísimo desde que me levanté,cansancio
+siento el cuerpo cansado y pesado,cansancio
+me siento sin ganas de moverme de cansancio,cansancio
+siento que el cuerpo no me responde de cansado,cansancio
+ando arrastrando los pies de tan cansado,cansancio
+siento sueño y cansancio,cansancio
+me pesa hasta levantar los brazos de cansancio,cansancio
+siento que no me alcanzan las horas de sueño para reponerme,cansancio
+me cuesta concentrarme de puro cansancio,cansancio
+siento que mi cuerpo pide a gritos descanso,cansancio
+ando bostezando todo el día de cansado,cansancio
+siento los párpados pesados de cansancio,cansancio
+me falta energía hasta para hablar,cansancio
+siento que arrastro los pies de cansado,cansancio
+ando fatigado desde que me levanté,cansancio
+siento que necesito dormir todo el día,cansancio
+me cuesta hasta pensar de lo cansado que estoy,cansancio
+siento el cuerpo agotado sin haber hecho esfuerzo,cansancio
+ando funcionando con muy poca energía hoy,cansancio
+siento que me falta descanso acumulado,cansancio
+me pesa el cuerpo entero de cansancio,cansancio
+siento que hoy no rindo nada de cansado,cansancio
+ando exhausto aunque dormí bastante,cansancio
+siento que se me acaba la energía a medio día,cansancio
+me cuesta abrir los ojos de cansado,cansancio
+siento fatiga en los músculos sin razón,cansancio
+ando con el cuerpo pesado y sin ánimo físico,cansancio
+me duele la cabeza,dolor_cabeza
+tengo un dolor de cabeza fuerte,dolor_cabeza
+siento como si me apretaran la cabeza,dolor_cabeza
+me punza la cabeza de un lado,dolor_cabeza
+tengo migraña,dolor_cabeza
+me duele la sien derecha,dolor_cabeza
+siento la cabeza pesada y me duele,dolor_cabeza
+tengo un dolor de cabeza que no se quita,dolor_cabeza
+me duele mucho la frente,dolor_cabeza
+siento presión en la cabeza,dolor_cabeza
+tengo dolor de cabeza,dolor_cabeza
+me late la cabeza del dolor,dolor_cabeza
+siento un dolor punzante en la cabeza,dolor_cabeza
+tengo la cabeza a punto de estallar,dolor_cabeza
+me duele la nuca y la cabeza,dolor_cabeza
+siento un dolor de cabeza detrás de los ojos,dolor_cabeza
+tengo la cabeza como si me la estuvieran apretando,dolor_cabeza
+me duele la parte de atrás de la cabeza,dolor_cabeza
+siento pulsaciones dolorosas en la cabeza,dolor_cabeza
+tengo un dolor de cabeza que empeora con la luz,dolor_cabeza
+siento un dolor de cabeza pulsátil,dolor_cabeza
+tengo cefalea desde la mañana,dolor_cabeza
+siento dolor en ambas sienes,dolor_cabeza
+me duele la cabeza al mover los ojos,dolor_cabeza
+tengo un dolor de cabeza que empeora con el ruido,dolor_cabeza
+siento presión detrás de los ojos,dolor_cabeza
+me duele la cabeza como si tuviera una banda apretada,dolor_cabeza
+tengo dolor de cabeza intermitente,dolor_cabeza
+siento un dolor agudo en la parte superior de la cabeza,dolor_cabeza
+me duele la cabeza al agacharme,dolor_cabeza
+tengo sensibilidad en el cuero cabelludo por el dolor,dolor_cabeza
+siento el dolor de cabeza extenderse hacia el cuello,dolor_cabeza
+me duele la cabeza desde que me desperté,dolor_cabeza
+tengo un dolor de cabeza tipo migraña,dolor_cabeza
+siento pulsaciones dolorosas en ambos lados de la cabeza,dolor_cabeza
+me duele la cabeza al exponerme a la luz,dolor_cabeza
+tengo dolor de cabeza acompañado de náuseas,dolor_cabeza
+siento la cabeza tensa por el dolor,dolor_cabeza
+me duele la cabeza de forma constante todo el día,dolor_cabeza
+tengo un dolor de cabeza que no cede con nada,dolor_cabeza
+no tengo ninguna molestia hoy,sin_sintoma
+me siento físicamente bien,sin_sintoma
+no siento nada raro,sin_sintoma
+todo normal sin dolencias,sin_sintoma
+no tengo ningún síntoma,sin_sintoma
+me siento sano,sin_sintoma
+sin quejas físicas por ahora,sin_sintoma
+no siento molestias en el cuerpo,sin_sintoma
+todo bien de salud,sin_sintoma
+no tengo dolor ni malestar,sin_sintoma
+me siento en buen estado físico,sin_sintoma
+nada que reportar me siento bien,sin_sintoma
+sin novedad físicamente estoy bien,sin_sintoma
+no hay ningún síntoma que reportar,sin_sintoma
+me siento completamente normal,sin_sintoma
+no traigo ninguna molestia física,sin_sintoma
+me siento en forma,sin_sintoma
+físicamente todo tranquilo por aquí,sin_sintoma
+no hay nada raro en el cuerpo,sin_sintoma
+me encuentro bien de salud,sin_sintoma
+no tengo molestias que reportar el día de hoy,sin_sintoma
+me siento a tope físicamente,sin_sintoma
+mi cuerpo se siente perfectamente bien,sin_sintoma
+no hay nada anormal en cómo me siento físicamente,sin_sintoma
+hoy no presento ningún malestar,sin_sintoma
+me siento con buena condición física,sin_sintoma
+estoy libre de síntomas hoy,sin_sintoma
+mi estado físico es óptimo hoy,sin_sintoma
+no experimento ninguna molestia corporal,sin_sintoma
+me siento saludable el día de hoy,sin_sintoma
+mi cuerpo responde bien sin quejas,sin_sintoma
+no detecto ninguna incomodidad física,sin_sintoma
+estoy completamente bien de salud física,sin_sintoma
+no tengo nada que reportar sobre síntomas físicos,sin_sintoma
+me siento con energía y sin molestias,sin_sintoma
+mi cuerpo está funcionando con normalidad,sin_sintoma
+no hay indicios de malestar en mí hoy,sin_sintoma
+me siento vital y sin quejas físicas,sin_sintoma
+estoy en condiciones físicas normales,sin_sintoma
+no percibo ningún síntoma en mi cuerpo hoy,sin_sintoma
